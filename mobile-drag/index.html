@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Mobile drag/drop test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<style type="text/css">
+  	#container { border: 1px solid black; height: 400px; padding:10px; position: relative; width: 400px; }
+  	.holder { border: 1px solid gray; height: 150px; width: 150px; }
+  	.left { float: left; }
+  	.right { float: right; }
+  	.word, .bank { height: 150px; width: 150px; }
+  	.word { float: left; }
+  	.word.blue { background-color: blue; }
+  	.word.red { background-color: red; float: right; }
+  	.bank {  bottom: 10px; position: absolute; }
+  	.bank.blue { border: 2px solid blue; }
+  	.bank.red { border: 2px solid red; right: 10px; }
+  	
+  	#output { border: 1px solid black; float: right; height: auto; min-height: 100px; width: 250px; }
+  	p { line-height: 16px; margin: 0 0 5px 0; padding: 0; }
+	</style>
+</head>
+<body>
+  <div id="output"></div>
+  <div id="container">
+    <div class="holder left" data-for="blue">
+      <div class="word blue" data-response="blue"></div>
+    </div>
+    
+    <div class="holder right" data-for="red">
+      <div class="word red" data-response="red"></div>
+    </div>
+    
+    <div class="bank red" data-answer="red"></div>
+    <div class="bank blue" data-answer="blue"></div>
+  </div>
+  
+  <button id="reset" value=" Reset "> Reset </button>
+  <button id="grade"> Grade </button>
+  
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+    <script src="https://raw.github.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript">
+          $reset = $('#reset');
+          $grade = $('#grade');
+          $output = $('#output');
+
+          dragOptions = {
+              containment: '#container',
+              revert: "invalid",
+              snap: ".bank",
+              snapTolerance: "75px",
+              create: function() {
+                $(this).data('position', $(this).position());
+                $(this).data('holder', $(this).parent());
+                $(this).parent().data('elm', $(this));
+              }
+            };
+
+          dropOptions = {
+            accept: 'div.word',
+            drop: function( event, ui ) {
+              var $dropped = $(ui.draggable);
+              var $droppedOn = $(this).droppable('widget');
+              var response = $dropped.attr('data-response');
+
+              // Set original position if it doesn't already exist
+              if (!$dropped.data('originalPosition')) {
+                $dropped.data('originalPosition', $dropped.data('draggable').originalPosition);
+              }
+
+              // Set the droppedIn data attribute - adds data-droppedIn to the parent (.holder) to keep a record of where its draggable element ended up
+              $dropped.parent().data('droppedIn', $droppedOn);
+
+              // Add class to signify that the word has been dropped
+              $dropped.data('holder').addClass('holder_empty');
+
+              // Snap to middle
+              snapToMiddle($dropped, $droppedOn);
+
+              // Disable dragging for the response element
+              //$dropped.draggable('disable');//.detach().css({ top: 0, left: 0 }).appendTo($droppedOn);
+              $droppedOn.droppable('disable');
+
+              // Set response data attribute on droppable to keep a record of how the user answered
+              $droppedOn.data('response', response);
+
+              // Set reset button up to be fired
+              $reset.addClass('reset');
+            }
+          };
+
+        // jQuery stuff
+        $(function() {
+
+
+
+          $('#reset').click(function(){
+
+            if ($(this).hasClass('reset')) {
+              // Reset .word
+              $('.word').each(function(){
+                resetDrag($(this));
+              });
+
+              // Reset .bank
+              $('.bank').each(function(){
+                resetDrop($(this));
+              });
+
+              // Reset the reset button
+              $reset.removeClass('reset');
+            }
+
+          });
+
+
+          $('#grade').click(function(){
+            $output.append('<p>Grading...</p>');
+          });
+
+
+
+          $('.holder').click(function(){
+
+            if ($(this).hasClass('holder_empty')) {
+              var $dragged = $(this).data('elm');
+              var $droppedIn = $(this).data('droppedIn');
+
+              // Remove the class that signifies the word has been dropped
+              $(this).removeClass('holder_empty');
+
+              // Reset this drag and its drop
+              resetDrag($dragged);
+              resetDrop($droppedIn); 
+            }
+
+          });
+
+
+
+          // Set up initial draggable/droppable objects
+          $( ".word" ).draggable(dragOptions);
+          $( ".bank" ).droppable(dropOptions);
+
+
+
+        });
+
+
+
+        // Helper functions
+        function snapToMiddle(dragger, target) {
+          var topMove = target.position().top - dragger.data('position').top + (target.outerHeight(true) - dragger.outerHeight(true)) / 2;
+          var leftMove= target.position().left - dragger.data('position').left + (target.outerWidth(true) - dragger.outerWidth(true)) / 2;
+          dragger.animate({top:topMove,left:leftMove},{duration:600,easing:'easeOutBack'});
+        }
+
+        function resetDrag($selector) {
+          var data = $selector.data(),
+              position = $selector.data('originalPosition');
+
+          if (position) {
+            $selector.animate({ left: position.left, top: position.top }, {duration: 600, easing: 'easeOutBack'}, function(){
+              $selector.data('originalPosition', undefined);
+              $selector.parent().data('droppedIn', undefined);
+            });
+          } else {
+            return false;
+          }
+
+          $selector.draggable('enable', dragOptions);
+        }
+        
+        function resetDrop($selector) {
+          $selector.droppable('enable', dropOptions);
+          $selector.data('response', null);
+        }
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+#tabs .recipe { display: none; }
+
+#tabs.winter .winter { display: block; }
+#tabs.spring .spring { display: block; }
+#tabs.summer .summer { display: block; }
+#tabs.fall .fall { display: block; }
+
+#tabs ul { clear: both; padding-bottom: 20px; }
+#tabs ul li { /*background-image: url('http://gorving.com/_assets/_images/sprite.png'); background-position: -231px -211px;*/ display: block; float: left; height: 23px; outline: 1px solid black; padding: 0; text-align: center; }
+#tabs ul li span { outline: 1px solid red; margin-left: 10px; padding: 0 15px 0 5px; }
+
+.tab { clear: both; }
+
+/*
+
+http://gorving.com/_assets/_images/sprite.png
+
+*/

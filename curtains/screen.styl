@@ -1,0 +1,177 @@
+/* This parent can be any width and height */
+.block {
+  text-align: center;
+}
+ 
+/* The ghost, nudged to maintain perfect centering */
+.block:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+/* The element to be centered, can
+   also be of any width and height */ 
+.centered {
+  display: inline-block;
+  vertical-align: middle;
+  width: 640px;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+
+#viewport {
+  background: #eee;
+  height: 320px;
+  margin-top: 50px;
+  outline: red;
+  overflow: hidden;
+  position: relative;
+  width: 640px;
+  box-shadow(5px, 5px, 50px, 1px, black)
+}
+
+div.curtain {
+  background: url(bc1.jpg) 0 0;
+  height: inherit;
+  /*opacity: .5;*/
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+div.curtain.left {
+  left: -50%;
+  -webkit-animation-name: open-left;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-delay: .5s;
+}
+div.curtain.right {
+  background: url(bc1-r.jpg) 100% 0;
+  right: -50%;
+  -webkit-animation-name: open-right;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-delay: .5s;
+}
+div.curtain-inner {
+  background: red;
+  height: inherit;
+  width: 50px;
+  z-index: 10;
+}
+div.curtain-inner.left {
+  background: red /*url(bc1.jpg) 20%*/;
+  float: right;
+  opacity: .5;
+  -webkit-transform: translateX(50px);
+}
+div.curtain-inner.right {
+  float: left;
+}
+/*div.curtain.left.open {
+  left: -50%;
+}
+div.curtain.right.open {
+  right: -50%;
+}*/
+
+
+
+
+@-webkit-keyframes open-left {
+	0%   { left: -50%; -webkit-transform: skew(0deg);  }
+	7%   { -webkit-transform: skew(10deg); -webkit-animation-timing-function: ease-in-out; }
+	15%   { -webkit-transform: skew(21deg); -webkit-animation-timing-function: ease-in-out;}
+	33%  { -webkit-transform: skew(18deg); }
+  75%   { -webkit-transform: skew(13deg); -webkit-animation-timing-function: ease-in; }
+	100% { left: -108%; -webkit-transform: skew(-3deg); -webkit-animation-timing-function:ease-out; }
+}
+@-webkit-keyframes open-right {
+	0%   { right: -50%; -webkit-transform: skew(0deg);  }
+	7%   { -webkit-transform: skew(-10deg); -webkit-animation-timing-function: ease-in-out;}
+	15%   { -webkit-transform: skew(-21deg); -webkit-animation-timing-function: ease-in-out;}
+	33%  { -webkit-transform: skew(-18deg); }
+	75%   { -webkit-transform: skew(-13deg); -webkit-animation-timing-function: ease-in; }
+	100% { right: -108%; -webkit-transform: skew(-3deg); -webkit-animation-timing-function:ease-out;  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// © 2011 Artem Sapegin http://sapegin.ru
+
+// Simple CSS3 properties with vendor prefixes
+
+box-sizing()
+	-moz-box-sizing arguments
+	box-sizing arguments
+
+box-shadow()
+	-webkit-box-shadow arguments
+	box-shadow arguments
+
+transition()
+	-webkit-transition arguments
+	-moz-transition arguments
+	-ms-transition arguments
+	-o-transition arguments
+	transition arguments
+
+transform()
+	-webkit-transform arguments
+	-moz-transform arguments
+	-ms-transform arguments
+	-o-transform arguments
+	transform arguments
+
+overflow-scrolling()
+	-webkit-overflow-scrolling arguments
+	overflow-scrolling arguments	
+
+// Preserve '%'s in hsla() -- strange hack
+hsla()
+	'hsla(%s)' % unquote(join(', ', arguments))
+
+
+// Gradients
+// https://github.com/LearnBoost/stylus/issues/245
+
+replace(str, a, b)
+	str = clone(str)
+	for e, i in str
+		if length(e) > 1
+			str[i] = replace(e, a, b)
+		else
+			if a == e
+				str[i] = b
+	str
+
+linear-gradient()
+	prop = current-property[0]
+	val = current-property[1]
+	args = unquote(join(', ', arguments))
+	add-property(prop, replace(val, '__CALL__', '-webkit-linear-gradient(%s)' % args))
+	add-property(prop, replace(val, '__CALL__', '-moz-linear-gradient(%s)' % args))
+	add-property(prop, replace(val, '__CALL__', '-ms-linear-gradient(%s)' % args))
+	add-property(prop, replace(val, '__CALL__', '-o-linear-gradient(%s)' % args))
+	g = 'linear-gradient(%s)' % args
+	g

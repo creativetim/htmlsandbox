@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Victory Point</title>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=1024" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<link href="res/css/screen.css" rel="stylesheet">
+</head>
+<body class="impress-not-supported">
+
+  <div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+  </div>
+
+  <div id="impress">
+    <div id="home" class="step slide" data-transition-duration="5000">
+      <h1>VP</h1>
+      <h2>Victory Point</h2>
+    </div>
+    <div id="next" class="step slide" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
+      <p>Next</p>
+    </div>
+  </div>
+  <script src="res/js/impress.js"></script>
+  <script src="res/js/jquery.js"></script>
+  <script>
+    var impress = impress();
+    impress.init();
+
+    
+    document.addEventListener('impress:stepenter', function(e){
+      if (typeof timing !== 'undefined') clearInterval(timing);
+      var duration = (e.target.getAttribute('data-transition-duration') ? e.target.getAttribute('data-transition-duration') : 2000);
+      timing = setInterval(impress.next, duration);
+    });
+    
+
+    
+
+    
+    
+  </script>
+</body>
+</html>

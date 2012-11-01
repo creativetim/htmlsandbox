@@ -1,0 +1,6 @@
+.mask {
+  height: 100px;
+  overflow: hidden;
+  width: 250px;
+  tranisition: 5s all;
+}

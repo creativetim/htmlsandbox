@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ruby on Rails: Welcome aboard</title>
+    <base href="http://www.biltmore.com" />
+    <link rel="stylesheet" href="/!includes/css/mp_layout.css" type="text/css" />
+    <link rel="stylesheet" href="/slideshows/_css/slideshow.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="http://htmlsandbox.local/slideshow/_css/screen.css" type="text/css" media="screen" charset="utf-8" />
+    
+    <script src="http://htmlsandbox.local/slideshow/_js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="http://htmlsandbox.local/slideshow/_js/jquery.slideshow.js" type="text/javascript"></script>
+    <script src="http://htmlsandbox.local/slideshow/_js/jquery-ui-1.8.21.custom.min.js"></script>
+    <script type="text/javascript">
+    
+jQuery(function ($) {
+    //$('.slides[data-condition="' + (PageviewTracker.isReturnVisitor() ? 'first-visit' : 'return-visit') + '"]').remove();
+
+    // Load slide images
+    $('.slide').each(function () {
+        var url = $(this).attr('data-image');
+        $('<img src="' + url + '" width="996" height="381" alt="">').prependTo(this);
+    });
+
+    if ($.browser.msie) {
+        $('#homepage-slideshow').addClass('ie');
+        
+        $('#homepage-slideshow .banner h2').each(function () {
+            $(this).clone().addClass('shadow').insertAfter(this);
+            $(this).siblings('h2').andSelf().wrapAll('<div class="headline">');
+        });
+    }
+
+
+$('#homepage-slideshow').slideshow({
+	slideSelector: '.slide',
+	pager: '#homepage-slideshow .pager',
+	timeout: 2000,
+	speed: 500,
+	autoPlay: true,
+	pauseOnHover: true,
+	transition: 'fade'
+	//transition: 'kenburns'
+});
+
+$('#homepage-slideshow').on('afterChange', null, null, $.proxy(
+  function (e, newIndex, oldIndex) {
+    //console.log(oldIndex + ' to ' + newIndex);
+			//var forward = (e.nextIndex > e.currentIndex);
+			//var width = e.currentSlide.outerWidth();
+			
+			e.currentSlide.animate({ left: }, e.speed, function () {
+				//e.currentSlide.css('left', 0);
+				next();
+			});
+  }, this));
+
+});
+    
+    </script>
+  </head>
+  <body>
+<div class="slideshow" id="homepage-slideshow">
+	<div class="pager"></div>
+
+	<div class="slides" data-condition="first-visit">
+
+		<div class="slide" data-image="/slideshows/_images/home/christmas-night.jpg">
+			<div class="banner">
+				<div class="fill" style="background: #5f5f82;"></div>
+				<div class="edge"></div>
+				<div class="content">
+					<h2>Immerse yourself in enchantment. <em>Christmas <br>at Biltmore</em>, November 4 &ndash; January 1.</h2>
+					<a href="http://www.biltmore.com/visit/default.asp" class="button"><span>Plan your visit</span></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide" data-image="/slideshows/_images/home/antler-hill-village.jpg">
+			<div class="banner">
+				<div class="fill" style="background: #4c4152;"></div>
+				<div class="edge"></div>
+				<div class="content">
+					<h2>Wine, dine and shop at Antler <br>Hill Village &amp; Winery.</h2>
+					<a href="http://www.biltmore.com/visit/antler_hill_village/default.asp" class="button"><span>Discover the fun</span></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide" data-image="/slideshows/_images/home/inn.jpg">
+			<div class="banner">
+				<div class="fill" style="background: #dec5bd;"></div>
+				<div class="edge"></div>
+				<div class="content">
+					<h2>Wake up to a view of <br>the Blue Ridge Mountains.</h2>
+					<a href="http://www.biltmore.com/stay/default.asp" class="button"><span>Stay at the Inn On Biltmore Estate</span></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide" data-image="/slideshows/_images/home/christmas-day.jpg">
+			<div class="banner">
+				<div class="fill" style="background: #ffeba7;"></div>
+				<div class="edge"></div>
+				<div class="content">
+					<h2>Rediscover the best parts <br>of <em>Christmas at Biltmore</em>.</h2>
+					<a href="http://www.biltmore.com/christmas" class="button"><span>Find Christmas</span></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide" data-image="/slideshows/_images/home/tiffany-lamps.jpg">
+			<div class="banner">
+				<div class="fill" style="background: #ec885a;"></div>
+				<div class="edge"></div>
+				<div class="content">
+					<h2>View Tiffany lamps on display <br>for a limited time at Biltmore.</h2>
+					<a href="http://www.biltmore.com/visit/calendar/tiffany.asp" class="button"><span>See the exhibition</span></a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="slides" data-condition="return-visit">
+
+		<div class="slide" data-image="/slideshows/_images/home/christmas-night.jpg">
+			<div class="banner">
+				<div class="fill" style="background: #5f5f82;"></div>
+				<div class="edge"></div>
+				<div class="content">
+					<h2>Immerse yourself in enchantment. <em>Christmas <br>at Biltmore</em>, November 4 &ndash; January 1.</h2>
+					<a href="http://www.biltmore.com/visit/default.asp" class="button"><span>Reserve your tickets now</span></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide" data-image="/slideshows/_images/home/inn.jpg">
+			<div class="banner">
+				<div class="fill" style="background: #dec5bd;"></div>
+				<div class="edge"></div>
+				<div class="content">
+					<h2>Stay at the Inn on Biltmore Estate <br>with rates starting at $249.</h2>
+					<a href="http://www.biltmore.com/stay/rates/default.asp" class="button"><span>Check availability</span></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide" data-image="/slideshows/_images/home/area-hotels.jpg">
+			<div class="banner">
+				<div class="fill" style="background: #92aab6;"></div>
+				<div class="edge"></div>
+				<div class="content">
+					<h2>Get area hotel packages including <br>Biltmore admission starting at $202.</h2>
+					<a href="http://www.biltmore.com/stay/area.asp" class="button"><span>See packages</span></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide" data-image="/slideshows/_images/home/tiffany-lamps.jpg">
+			<div class="banner">
+				<div class="fill" style="background: #ec885a;"></div>
+				<div class="edge"></div>
+				<div class="content">
+					<h2>See the Tiffany lamp exhibition <br>free with Biltmore ticket purchase.</h2>
+					<a href="http://www.biltmore.com/visit/calendar/tiffany.asp" class="button"><span>See the exhibition</span></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide" data-image="/slideshows/_images/home/wine.jpg">
+			<div class="banner">
+				<div class="fill" style="background: #b18f8e;"></div>
+				<div class="edge"></div>
+				<div class="content">
+					<h2>Find the perfect bottle of <br>our award-winning wine.</h2>
+					<a href="http://www.biltmore.com/our_wine/wines/search_all.asp" class="button"><span>Start selecting</span></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide" data-image="/slideshows/_images/home/for-your-home.jpg">
+			<div class="banner">
+				<div class="fill" style="background: #ae1927;"></div>
+				<div class="edge"></div>
+				<div class="content">
+					<h2>Explore Biltmore-inspired <br>items for your home.</h2>
+					<a href="http://www.biltmore.com/bring_home/default.asp" class="button"><span>Discover our selections</span></a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+  </body>
+</html>

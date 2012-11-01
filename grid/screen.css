@@ -1,0 +1,4 @@
+#wrapper { background: #666; border: 1px solid black; height: 200px; width: auto; }
+.box { margin: 5px; display: inline-block;}
+.onexOne { height: 40px; width: 40px; }
+.onexTwo { height: 90px; width: 40px; }

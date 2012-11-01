@@ -1,0 +1,21 @@
+div.shell {
+  height: 400px;
+  outline: 1px solid black;
+  width: 960px;
+}
+div.list {
+  background: #666;
+  float: left;
+  height: inherit;
+  overflow: scroll;
+  width: 300px;
+}
+div.content {
+  background: #eee;
+  float: right;
+  height: inherit;
+  overflow: visible;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  width: 650px;
+}
