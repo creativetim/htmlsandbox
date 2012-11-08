@@ -1,0 +1,375 @@
+@backgroundL: -webkit-linear-gradient(#83a8d4 0%, #567aa7 100%);
+@backgroundHoverL: -webkit-linear-gradient(#aac3e1 0%, #7d96b4 100%);
+@backgroundActiveL: @backgroundL;
+@backgroundActiveHoverL: @backgroundHoverL;
+@colorL: @backgroundHoverL;
+@colorHoverL: @backgroundL;
+@colorActiveL: @backgroundActiveHoverL;
+@colorActiveHoverL: @backgroundActiveL;
+
+@backgroundR: -webkit-linear-gradient(#ce6dab 0%, #a23f7e 100%);
+@backgroundHoverR: -webkit-linear-gradient(#dd9ac5 0%, #b26c98 100%);
+@backgroundActiveR: @backgroundR;
+@backgroundActiveHoverR: @backgroundHoverR;
+@colorR: @backgroundHoverR;
+@colorHoverR: @backgroundR;
+@colorActiveR: @backgroundActiveHoverR;
+@colorActiveHoverR: @backgroundActiveR;
+
+@borderColor: #bfd5e8;
+
+
+
+.gradient(@color: #F5F5F5, @start: #EEE, @stop: #FFF) {
+  background: @color;
+  background: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, @start),
+                               color-stop(1, @stop));
+  background: -ms-linear-gradient(bottom,
+                                  @start,
+                                  @stop);
+  background: -moz-linear-gradient(center bottom,
+                                   @start 0%,
+                                   @stop 100%);
+}
+
+
+
+
+// Each panel will have two states: off || on
+// Depending on the value of @switch certain values are given to background: and color:
+
+
+
+
+.setColors(left_off) {
+  @bgLStart: #567aa7;
+  @bgLStop: #83a8d4;
+  .gradient(@bgLStart, @bgLStart, @bgLStop);
+}
+.setColors(left_on) {
+  @bgLStart: #7d96b4;
+  @bgLStop: #aac3e1;
+  .gradient(@bgLStart, @bgLStart, @bgLStop);
+}
+.setColors(right_off) {
+  @bgRStart: #b26c98;
+  @bgRStop: #dd9ac5;
+  .gradient(@bgRStart, @bgRStart, @bgRStop);
+}
+.setColors(right_on) {
+  @bgRStart: #a23f7e;
+  @bgRStop: #ce6dab;
+  .gradient(@bgRStart, @bgRStart, @bgRStop);
+}
+.setColors(@_) {
+  color: #fff;
+}
+
+
+
+
+
+
+@font-face {
+    font-family: 'Museo';
+    src: url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo300-Regular-webfont.eot');
+    src: url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo300-Regular-webfont.eot?iefix') format('eot'),
+         url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo300-Regular-webfont.woff') format('woff'),
+         url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo300-Regular-webfont.ttf') format('truetype'),
+         url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo300-Regular-webfont.svg#webfontBsA9EFUC') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Museo500';
+    src: url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo500-Regular-webfont.eot');
+    src: url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo500-Regular-webfont.eot?iefix') format('eot'),
+         url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo500-Regular-webfont.woff') format('woff'),
+         url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo500-Regular-webfont.ttf') format('truetype'),
+         url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo500-Regular-webfont.svg#webfontQF7qPaga') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Museo';
+    src: url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo700-Regular-webfont.eot');
+    src: url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo700-Regular-webfont.eot?iefix') format('eot'),
+         url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo700-Regular-webfont.woff') format('woff'),
+         url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo700-Regular-webfont.ttf') format('truetype'),
+         url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo700-Regular-webfont.svg#webfontNpXBDqia') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  background-color: #a4a4a4;
+  font-family: "Museo", "Myriad Pro", Helvetica, Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+a {
+  color: #e1e1e1;
+  font-weight: bold;
+  text-decoration: none;
+}
+#prod-rec {
+  display: none;
+  background: #2c2c2c;
+  font-family: "Museo500";
+  font-size: 2em;
+  height: 100%;
+  left: 0;
+  //overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+#prod-rec .nav span {
+  border-color: @borderColor;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  display: table;
+  text-align: center;
+  width: 100%;
+}
+
+
+
+/*
+*
+* Setup panels
+*
+*/
+#left, #right {
+  display: table;
+  float: left;
+  height: 100%;
+  position: relative;
+  width: 50%;
+}
+
+
+
+/*
+*
+* Left #1
+*
+*/
+#left-header {
+  float: right;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+#left-header h3 {
+  //border-color: @borderColor;
+  //border-style: solid;
+  //border-width: 0 1px 0 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+#left-header a {
+ display: table;
+ height: 100%;
+ width: 100%;
+}
+#left-header a span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+#left-header a span:hover, #left-header a span.active:hover {
+  @switch: left_on;
+  .setColors(@switch);
+}
+#left-header, #left-header a span.active {
+  @switch: left_off;
+  .setColors(@switch);
+}
+
+
+
+/*
+*
+* Left #2
+*
+*/
+#left-shower {
+  display: none;
+  float: right;
+  height: 100%;
+  position: relative;
+  top: 0;
+  width: 1%;
+}
+#left-shower ul {
+  height: 100%;
+  width: 100%;
+}
+#left-shower ul li {
+  background: @backgroundL;
+  display: table;
+  height: 50%;
+  width: 100%;
+}
+#left-shower a {
+  //border-color: @borderColor;
+  //border-style: solid;
+  //border-width: 0 1px 1px 0;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+#otg-shower a.last {
+  border-bottom: 0;
+}
+#left-shower a.active {
+  background: @backgroundActiveL;
+  color: @colorActiveL;
+}
+#left-shower a:hover {
+  background: @backgroundHoverL;
+  color: @colorHoverL;
+}
+#left-shower a.active:hover {
+  background: @backgroundActiveHoverL;
+  color: @colorActiveHoverL;
+}
+
+
+
+/*
+*
+* Left #3
+*
+*/
+#left-scents {
+  display: none;
+  float: right;
+  height: 100%;
+  overflow: hidden;
+  width: 0;
+}
+#left-scents ul {
+  height: 100%;
+  width: 100%;
+}
+#left-scents ul li {
+  background: @backgroundL;
+  display: table;
+  height: 33.33%;
+  width: 100%;
+}
+#left-scents a {
+  //border-color: @borderColor;
+  //border-style: solid;
+  //border-width: 0 1px 1px 0;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+#otg-scents a.last {
+  border-bottom: 0;
+}
+#left-scents a.active {
+  background: @backgroundActiveL;
+  color: @colorActiveL;
+}
+#left-scents a:hover {
+  background: @backgroundHoverL;
+  color: @colorHoverL;
+}
+#left-scents a.active:hover {
+  background: @backgroundActiveHoverL;
+  color: @colorActiveHoverL;
+}
+
+
+
+/*
+*
+* Left #3
+*
+*/
+#left-products {
+  display: none;
+  float: right;
+  height: 100%;
+  overflow: hidden;
+  width: 0;
+}
+#left-products ul {
+  height: 100%;
+  width: 100%;
+}
+#left-products ul li {
+  background: @backgroundL;
+  display: table;
+  width: 100%;
+}
+#left-products a {
+  //border-color: @borderColor;
+  //border-style: solid;
+  //border-width: 0 1px 1px 0;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+
+/*
+*
+* Right #1
+*
+*/
+#right-header {
+  float: left;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+#right-header h3 {
+  //border-color: #666;
+  //border-style: solid;
+  //border-width: 0 1px 0 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+#right-header a {
+ display: table;
+ height: 100%;
+ width: 100%;
+}
+#right-header a span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+#right-header, #right-header a span.active {
+  @switch: right_on;
+  .setColors(@switch);
+}
+#right-header a span:hover, #right-header a span.active:hover {
+  @switch: right_off;
+  .setColors(@switch);
+}

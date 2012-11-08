@@ -1,0 +1,242 @@
+@font-face {
+  font-family: 'Museo';
+  src: url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo300-Regular-webfont.eot');
+  src: url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo300-Regular-webfont.eot?iefix') format('eot'), url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo300-Regular-webfont.woff') format('woff'), url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo300-Regular-webfont.ttf') format('truetype'), url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo300-Regular-webfont.svg#webfontBsA9EFUC') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Museo500';
+  src: url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo500-Regular-webfont.eot');
+  src: url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo500-Regular-webfont.eot?iefix') format('eot'), url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo500-Regular-webfont.woff') format('woff'), url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo500-Regular-webfont.ttf') format('truetype'), url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo500-Regular-webfont.svg#webfontQF7qPaga') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Museo';
+  src: url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo700-Regular-webfont.eot');
+  src: url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo700-Regular-webfont.eot?iefix') format('eot'), url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo700-Regular-webfont.woff') format('woff'), url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo700-Regular-webfont.ttf') format('truetype'), url('http://summerseve.com/sites/all/themes/summerseve/fonts/Museo700-Regular-webfont.svg#webfontNpXBDqia') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  background-color: #a4a4a4;
+  font-family: "Museo", "Myriad Pro", Helvetica, Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+a {
+  color: #e1e1e1;
+  font-weight: bold;
+  text-decoration: none;
+}
+#prod-rec {
+  display: none;
+  background: #2c2c2c;
+  font-family: "Museo500";
+  font-size: 2em;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+#prod-rec .nav span {
+  border-color: #bfd5e8;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  display: table;
+  text-align: center;
+  width: 100%;
+}
+/*
+*
+* Setup panels
+*
+*/
+#left,
+#right {
+  display: table;
+  float: left;
+  height: 100%;
+  position: relative;
+  width: 50%;
+}
+/*
+*
+* Left #1
+*
+*/
+#left-header {
+  float: right;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+#left-header h3 {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+#left-header a {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+#left-header a span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+#left-header a span:hover,
+#left-header a span.active:hover {
+  background: #7d96b4;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #7d96b4), color-stop(1, #aac3e1));
+  background: -ms-linear-gradient(bottom, #7d96b4, #aac3e1);
+  background: -moz-linear-gradient(center bottom, #7d96b4 0%, #aac3e1 100%);
+  color: #fff;
+}
+#left-header,
+#left-header a span.active {
+  background: #567aa7;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #567aa7), color-stop(1, #83a8d4));
+  background: -ms-linear-gradient(bottom, #567aa7, #83a8d4);
+  background: -moz-linear-gradient(center bottom, #567aa7 0%, #83a8d4 100%);
+  color: #fff;
+}
+/*
+*
+* Left #2
+*
+*/
+#left-shower {
+  display: none;
+  float: right;
+  height: 100%;
+  position: relative;
+  top: 0;
+  width: 1%;
+}
+#left-shower ul {
+  height: 100%;
+  width: 100%;
+}
+#left-shower ul li {
+  background: -webkit-linear-gradient(#83a8d4 0%, #567aa7 100%);
+  display: table;
+  height: 50%;
+  width: 100%;
+}
+#left-shower a {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+#otg-shower a.last {
+  border-bottom: 0;
+}
+#left-shower a.active {
+  background: -webkit-linear-gradient(#83a8d4 0%, #567aa7 100%);
+  color: -webkit-linear-gradient(#aac3e1 0%, #7d96b4 100%);
+}
+#left-shower a:hover {
+  background: -webkit-linear-gradient(#aac3e1 0%, #7d96b4 100%);
+  color: -webkit-linear-gradient(#83a8d4 0%, #567aa7 100%);
+}
+#left-shower a.active:hover {
+  background: -webkit-linear-gradient(#aac3e1 0%, #7d96b4 100%);
+  color: -webkit-linear-gradient(#83a8d4 0%, #567aa7 100%);
+}
+/*
+*
+* Left #3
+*
+*/
+#left-scents {
+  display: none;
+  float: right;
+  height: 100%;
+  overflow: hidden;
+  width: 0;
+}
+#left-scents ul {
+  height: 100%;
+  width: 100%;
+}
+#left-scents ul li {
+  background: -webkit-linear-gradient(#83a8d4 0%, #567aa7 100%);
+  display: table;
+  height: 33.33%;
+  width: 100%;
+}
+#left-scents a {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+#otg-scents a.last {
+  border-bottom: 0;
+}
+#left-scents a.active {
+  background: -webkit-linear-gradient(#83a8d4 0%, #567aa7 100%);
+  color: -webkit-linear-gradient(#aac3e1 0%, #7d96b4 100%);
+}
+#left-scents a:hover {
+  background: -webkit-linear-gradient(#aac3e1 0%, #7d96b4 100%);
+  color: -webkit-linear-gradient(#83a8d4 0%, #567aa7 100%);
+}
+#left-scents a.active:hover {
+  background: -webkit-linear-gradient(#aac3e1 0%, #7d96b4 100%);
+  color: -webkit-linear-gradient(#83a8d4 0%, #567aa7 100%);
+}
+/*
+*
+* Right #1
+*
+*/
+#right-header {
+  float: left;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+#right-header h3 {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+#right-header a {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+#right-header a span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+#right-header,
+#right-header a span.active {
+  background: #a23f7e;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #a23f7e), color-stop(1, #ce6dab));
+  background: -ms-linear-gradient(bottom, #a23f7e, #ce6dab);
+  background: -moz-linear-gradient(center bottom, #a23f7e 0%, #ce6dab 100%);
+  color: #fff;
+}
+#right-header a span:hover,
+#right-header a span.active:hover {
+  background: #b26c98;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #b26c98), color-stop(1, #dd9ac5));
+  background: -ms-linear-gradient(bottom, #b26c98, #dd9ac5);
+  background: -moz-linear-gradient(center bottom, #b26c98 0%, #dd9ac5 100%);
+  color: #fff;
+}
