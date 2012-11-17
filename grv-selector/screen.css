@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100%;
+  width: 100%;
+}
+#grv-selector-container {
+  margin: 0 auto;
+  width: 960px;
+}
+#grv-selector-container #selector .question-panel .navigation button {
+  display: inline;
+}
+#grv-selector-container #selector.first .question-panel .navigation button.next {
+  display: inline;
+}
+#grv-selector-container #selector.first .question-panel .navigation button.previous,
+#grv-selector-container #selector.first .question-panel .navigation button.finish {
+  display: none;
+}
+#grv-selector-container #selector.last .question-panel .navigation button.next {
+  display: none;
+}
+#grv-selector-container #selector.last .question-panel .navigation button.previous,
+#grv-selector-container #selector.last .question-panel .navigation button.finish {
+  display: inline;
+}
+#grv-selector-container #selector .question-panel {
+  float: left;
+  height: 400px;
+  position: relative;
+  width: 320px;
+}
+#grv-selector-container #selector .question-panel .question .answer label {
+  clear: both;
+  display: block;
+  padding-bottom: 10px;
+}
+#grv-selector-container #selector .question-panel .navigation {
+  bottom: 0;
+  height: 50px;
+  position: absolute;
+  width: 100%;
+}
+#grv-selector-container #selector .question-panel .navigation button.previous {
+  display: inline;
+}
+#grv-selector-container #selector .question-panel .navigation button.finish {
+  display: none;
+}
+#grv-selector-container #selector .question-panel .navigation button.previous {
+  float: left;
+}
+#grv-selector-container #selector .question-panel .navigation button.next,
+#grv-selector-container #selector .question-panel .navigation button.finish {
+  float: right;
+}
+#grv-selector-container #selector .grid {
+  float: left;
+  width: 640px;
+}
+#grv-selector-container #selector .grid ul {
+  width: 100%;
+}
+#grv-selector-container #selector .grid ul li {
+  display: table;
+  float: left;
+  height: 100px;
+  list-style: none;
+  width: 320px;
+}
+#grv-selector-container #selector .grid ul li span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+#grv-selector-container #selector .grid ul li.disabled {
+  background-color: black;
+}
+#grv-selector-container #selector .didyouknows .dyk {
+  display: none;
+}
+#grv-selector-container #results .rv {
+  display: none;
+}

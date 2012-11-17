@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>GRV Selector Tool Prototype</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<link href="screen.css" rel="stylesheet">
+
+ <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+ <![endif]-->
+</head>
+<body>
+  <div id="grv-selector-container">
+    <div id="splash">
+      
+    </div> <!-- /splash -->
+    <div id="lifestyles">
+      
+    </div> <!-- /lifestyles -->
+    <div id="selector">
+      <div class="question-panel">
+        <div class="questions">
+          <div class="current-question"><span>1</span></div> <!-- /current-question -->
+
+
+          <!--
+            EXAMPLE MARK-UP
+          <div class="question" id="q1" data-dyk="1">
+            <h3>Do you prefer a vehicle you can tow or drive?</h3>
+            <div class="answer">
+              <label for="q1-a1"><input type="radio" name="q1" id="q1-a1" value="tow" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q2" data-dyk="2" /> Tow</label>
+              <label for="q1-a2"><input type="radio" name="q1" id="q1-a2" value="drive" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q3" data-dyk="3" /> Drive</label>
+            </div>
+          </div> -->
+
+
+
+
+
+          <div class="question" id="q1" data-did-you-know="1">
+            <h3>Do you prefer a vehicle you can tow or drive?</h3>
+            <div class="answer">
+              <label for="q1-a1">
+                <input type="radio" name="q1" id="q1-a1" value="tow" data-next-question="q2" data-did-you-know="2" /> Tow
+              </label>
+              <label for="q1-a2">
+                <input type="radio" name="q1" id="q1-a2" value="drive" data-results="A B C" data-next-question="q3" data-did-you-know="3" /> Drive
+              </label>
+            </div> <!-- /answer -->
+          </div> <!-- /question -->
+
+          <div class="question" id="q2" data-did-you-know="4">
+            <h3>What kind of vehicle will you use to tow?</h3>
+            <div class="answer">
+              <label for="q2-a1">
+                <input type="radio" name="q2" id="q2-a1" value="sedan-minivan" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q3" /> Sedan/Minivan
+              </label>
+              <label for="q2-a2">
+                <input type="radio" name="q2" id="q2-a2" value="light-duty-truck" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q3" /> Light-Duty Truck
+              </label>
+              <label for="q2-a3">
+                <input type="radio" name="q2" id="q2-a3" value="full-size pickup" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q3" /> Full-Size Pickup
+              </label>
+              <label for="q2-a4">
+                <input type="radio" name="q2" id="q2-a4" value="suv" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q3" /> SUV
+              </label>
+            </div> <!-- /answer -->
+          </div> <!-- /question -->
+
+          <div class="question" id="q3" data-did-you-know="5">
+            <h3>Do you prefer the feeling of sleeping indoors or outdoors?</h3>
+            <div class="answer">
+              <label for="q3-a1">
+                <input type="radio" name="q3" id="q3-a1" value="outdoors" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q4" /> Outdoors
+              </label>
+              <label for="q3-a2">
+                <input type="radio" name="q3" id="q3-a2" value="indoors" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q4" /> Indoors
+              </label>
+            </div> <!-- /answer -->
+          </div> <!-- /question -->
+
+          <div class="question" id="q4" data-did-you-know="5">
+            <h3>How man people would you like your RV to sleep?</h3>
+            <div class="answer">
+              <label for="q4-a1">
+                <input type="radio" name="q4" id="q4-a1" value="4" data-results="A B C" /> 4
+              </label>
+              <label for="q4-a2">
+                <input type="radio" name="q4" id="q4-a2" value="6" data-results="A C" /> 6
+              </label>
+              <label for="q4-a3">
+                <input type="radio" name="q4" id="q4-a3" value="8" data-results="C" /> 8
+              </label>
+              <label for="q4-a4">
+                <input type="radio" name="q4" id="q4-a4" value="10" data-results="C" /> 10
+              </label>
+            </div> <!-- /answer -->
+          </div> <!-- /question -->
+
+
+
+
+
+
+        </div> <!-- /questions -->
+        <div class="navigation">
+          <button class="previous">Previous</button>
+          <button class="next">Next</button>
+          <button class="finish">Finish</button>
+        </div> <!-- /navigation -->
+      </div> <!-- /question-panel -->
+      <div class="grid">
+        <ul>
+          <li data-code="TT"><span>Conventional Travel Trailer</span></li>
+          <li data-code="5thW"><span>Fifth-Wheel Travel Trailer</span></li>
+          <li data-code="TC"><span>Truck Camper</span></li>
+          <li data-code="EXP"><span>Expandable Travel Trailer</span></li>
+          <li data-code="FCT"><span>Folding Camping Trailer</span></li>
+          <li data-code="A"><span>Type A Motorhome</span></li>
+          <li data-code="B"><span>Type B Motorhome</span></li>
+          <li data-code="C"><span>Type C Motorhome</span></li>
+        </ul>
+      </div><!-- /grid -->
+      <div class="did-you-knows">
+        <div class="item" data-id="1">
+          <span>New innovations make today&rsquo;s RVs more fuel-efficient than ever.</span>
+        </div>
+        <div class="item" data-id="2">
+          <span>A benefit of towing your RV is that you can unhitch at the campground and have your vehicle for sightseeing adventures.</span>
+        </div>
+        <div class="item" data-id="3">
+          <span>Motorhomes have plenty of seatbelts &ndash; so passengers can play a game at the dinette or relax on the sofa while riding down the road.</span>
+        </div>
+        <div class="item" data-id="4">
+          <span>This is DYK #4!</span>
+        </div>
+      </div> <!-- /didyouknows -->
+    </div> <!-- /selector -->
+    <div id="results">
+      <div class="rv-A">RV info</div>
+      <div class="rv-B">RV info</div>
+      <div class="rv-C">RV info</div>
+    </div> <!-- /results -->
+  </div> <!-- /grv-selector-container -->
+  
+  <p><a href="/index.html">Leave this page</a></p>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="selector.js"></script>
+</body>
+</html>
