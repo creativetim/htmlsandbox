@@ -4,11 +4,30 @@
 }
 body {
   height: 100%;
+  position: relative;
   width: 100%;
 }
 #grv-selector-container {
   margin: 0 auto;
   width: 960px;
+}
+#grv-selector-container #splash {
+  display: none;
+}
+#grv-selector-container #splash.open {
+  display: block;
+}
+#grv-selector-container #lifestyles {
+  display: none;
+}
+#grv-selector-container #lifestyles.open {
+  display: block;
+}
+#grv-selector-container #selector {
+  display: none;
+}
+#grv-selector-container #selector.open {
+  display: block;
 }
 #grv-selector-container #selector .question-panel .navigation button {
   display: inline;
@@ -82,6 +101,26 @@ body {
 #grv-selector-container #selector .didyouknows .dyk {
   display: none;
 }
+#grv-selector-container #results {
+  display: none;
+}
+#grv-selector-container #results.open {
+  display: block;
+}
 #grv-selector-container #results .rv {
   display: none;
+}
+#grv-selector-container #results .rv.enabled {
+  display: block;
+}
+#debug {
+  background-color: #fff;
+  border: 1px solid #000;
+  float: right;
+  min-height: 50px;
+  opacity: .7;
+  position: absolute;
+  right: 0;
+  width: 200px;
+  z-index: 100;
 }

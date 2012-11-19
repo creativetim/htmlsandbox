@@ -14,11 +14,30 @@
  <![endif]-->
 </head>
 <body>
+  <div id="debug">
+    <div class="answer-set"></div>
+  </div>
+
   <div id="grv-selector-container">
     <div id="splash">
-      
+      <h1>Splash page</h1>
+      <button id="open-lifestyles"> Get Started </button>
     </div> <!-- /splash -->
     <div id="lifestyles">
+      <h1>Lifestyles</h1>
+      <ul class="grid">
+        <li class="tailgating">
+          <h3>Tailgating</h3>
+        </li>
+      </ul> <!-- /grid -->
+      
+      <button id="open-selector"> Find my RV </button>
+      
+      <div class="content">
+        <div class="item tailgating">
+          
+        </div>
+      </div>
       
     </div> <!-- /lifestyles -->
     <div id="selector">
@@ -45,10 +64,10 @@
             <h3>Do you prefer a vehicle you can tow or drive?</h3>
             <div class="answer">
               <label for="q1-a1">
-                <input type="radio" name="q1" id="q1-a1" value="tow" data-next-question="q2" data-did-you-know="2" /> Tow
+                <input type="radio" name="q1" id="q1-a1" value="tow" data-results="TT 5thW EXP FCT TC" data-next-question="q2" data-did-you-know="2" /> Tow
               </label>
               <label for="q1-a2">
-                <input type="radio" name="q1" id="q1-a2" value="drive" data-results="A B C" data-next-question="q3" data-did-you-know="3" /> Drive
+                <input type="radio" name="q1" id="q1-a2" value="drive" data-results="A B C" data-next-question="q4" data-did-you-know="3" /> Drive
               </label>
             </div> <!-- /answer -->
           </div> <!-- /question -->
@@ -57,16 +76,16 @@
             <h3>What kind of vehicle will you use to tow?</h3>
             <div class="answer">
               <label for="q2-a1">
-                <input type="radio" name="q2" id="q2-a1" value="sedan-minivan" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q3" /> Sedan/Minivan
+                <input type="radio" name="q2" id="q2-a1" value="sedan-minivan" data-results="TT EXP FCT" data-next-question="q3" /> Sedan/Minivan
               </label>
               <label for="q2-a2">
-                <input type="radio" name="q2" id="q2-a2" value="light-duty-truck" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q3" /> Light-Duty Truck
+                <input type="radio" name="q2" id="q2-a2" value="light-duty-truck" data-results="TT EXP FCT TC" data-next-question="q3" /> Light-Duty Truck
               </label>
               <label for="q2-a3">
-                <input type="radio" name="q2" id="q2-a3" value="full-size pickup" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q3" /> Full-Size Pickup
+                <input type="radio" name="q2" id="q2-a3" value="full-size pickup" data-results="TT 5thW EXP FCT TC" data-next-question="q3" /> Full-Size Pickup
               </label>
               <label for="q2-a4">
-                <input type="radio" name="q2" id="q2-a4" value="suv" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q3" /> SUV
+                <input type="radio" name="q2" id="q2-a4" value="suv" data-results="TT EXP FCT" data-next-question="q3" /> SUV
               </label>
             </div> <!-- /answer -->
           </div> <!-- /question -->
@@ -75,28 +94,28 @@
             <h3>Do you prefer the feeling of sleeping indoors or outdoors?</h3>
             <div class="answer">
               <label for="q3-a1">
-                <input type="radio" name="q3" id="q3-a1" value="outdoors" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q4" /> Outdoors
+                <input type="radio" name="q3" id="q3-a1" value="outdoors" data-results="EXP FCT" data-next-question="q4" /> Outdoors
               </label>
               <label for="q3-a2">
-                <input type="radio" name="q3" id="q3-a2" value="indoors" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q4" /> Indoors
+                <input type="radio" name="q3" id="q3-a2" value="indoors" data-results="TT 5thW TC" data-next-question="q4" /> Indoors
               </label>
             </div> <!-- /answer -->
           </div> <!-- /question -->
 
           <div class="question" id="q4" data-did-you-know="5">
-            <h3>How man people would you like your RV to sleep?</h3>
+            <h3>How many people would you like your RV to sleep?</h3>
             <div class="answer">
               <label for="q4-a1">
-                <input type="radio" name="q4" id="q4-a1" value="4" data-results="A B C" /> 4
+                <input type="radio" name="q4" id="q4-a1" value="4" data-results="A B C TT 5thW EXP FCT TC" /> Up to 4
               </label>
               <label for="q4-a2">
-                <input type="radio" name="q4" id="q4-a2" value="6" data-results="A C" /> 6
+                <input type="radio" name="q4" id="q4-a2" value="6" data-results="A C TT 5thW EXP FCT TC" /> Up to 6
               </label>
               <label for="q4-a3">
-                <input type="radio" name="q4" id="q4-a3" value="8" data-results="C" /> 8
+                <input type="radio" name="q4" id="q4-a3" value="8" data-results="C TT 5thW EXP FCT" /> Up to 8
               </label>
               <label for="q4-a4">
-                <input type="radio" name="q4" id="q4-a4" value="10" data-results="C" /> 10
+                <input type="radio" name="q4" id="q4-a4" value="10" data-results="TT" /> Up to 10
               </label>
             </div> <!-- /answer -->
           </div> <!-- /question -->
@@ -141,13 +160,18 @@
       </div> <!-- /didyouknows -->
     </div> <!-- /selector -->
     <div id="results">
-      <div class="rv-A">RV info</div>
-      <div class="rv-B">RV info</div>
-      <div class="rv-C">RV info</div>
+      <div class="rv" data-code="A">RV A</div>
+      <div class="rv" data-code="B">RV B</div>
+      <div class="rv" data-code="C">RV C</div>
+      <div class="rv" data-code="TT">RV TT</div>
+      <div class="rv" data-code="5thW">RV 5thW</div>
+      <div class="rv" data-code="EXP">RV EXP</div>
+      <div class="rv" data-code="FCT">RV FCT</div>
+      <div class="rv" data-code="TC">RV TC</div>
     </div> <!-- /results -->
   </div> <!-- /grv-selector-container -->
   
-  <p><a href="/index.html">Leave this page</a></p>
+  <p style="display: none;"><a href="/index.html">Leave this page</a></p>
   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   <script src="selector.js"></script>

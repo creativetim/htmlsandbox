@@ -2,6 +2,7 @@
 
 body {
   height: 100%;
+  position: relative;
   width: 100%;
 }
 
@@ -9,7 +10,29 @@ body {
   margin: 0 auto;
   width: 960px;
 
+  #splash {
+    display: none;
+    
+    &.open {
+      display: block;
+    }
+  }
+  
+  #lifestyles {
+    display: none;
+
+    &.open {
+      display: block;
+    }
+  }
+
   #selector {
+    display: none;
+
+    &.open {
+      display: block;
+    }
+
     .question-panel .navigation button { display: inline; }
     &.first .question-panel .navigation {
       button.next { display: inline; }
@@ -90,8 +113,34 @@ body {
   
   
   #results {
+    display: none;
+
+    &.open {
+      display: block;
+    }
+
     .rv {
       display: none;
+      
+      &.enabled {
+        display: block;
+      }
     }
   }
 } // #grv-selector-container
+
+#debug {
+  background-color: #fff;
+  border: 1px solid #000;
+  float: right;
+  min-height: 50px;
+  opacity: .7;
+  position: absolute;
+  right: 0;
+  width: 200px;
+  z-index: 100;
+
+  .answer-set {
+    
+  }
+}
