@@ -14,164 +14,205 @@
  <![endif]-->
 </head>
 <body>
-  <div id="debug">
-    <div class="answer-set"></div>
-  </div>
-
   <div id="grv-selector-container">
     <div id="splash">
-      <h1>Splash page</h1>
-      <button id="open-lifestyles"> Get Started </button>
+      <h2>There's an RV for everyone. A few easy questions will help us get to know you and find the RV that's just right.</h2>
+      <p class="step1"><strong>Step 1: Relax. That's what RVising is all about.</strong><br />What makes you, "you"? Are you a gourmet cook? Planning to bring the kids? Do you enjoy tailgating at concerts or games?</p>
+      <p class="step2"><strong>Step 2: So many options. Where to start?</strong><br />Dream big...dream small. Find the RV that's just right. A few more questions will narrow the RV options.</p>
+      <p class="step3"><strong>Step 3: Sometimes seeing is believing.</strong><br />Like what you see? Find local RV dealers to get you on your way to a lifelong RV adventure.</p>
+      <p>Are you ready? <button id="open-lifestyles"> Get Started </button></p><br />
     </div> <!-- /splash -->
     <div id="lifestyles">
-      <h1>Lifestyles</h1>
+      <h2>A glimpse into the wonderful world of RVing: <span>Click an image to learn more.</span></h2>
       <ul class="grid">
-        <li class="tailgating">
-          <h3>Tailgating</h3>
-        </li>
+        <li class="kids"><h3>Kid-Approved Fun</h3></li>
+        <li class="tailgating"><h3>Tailgating Rocks!</h3></li>
+        <li class="cooking"><h3>Slice. Dice. Sizzle.</h3></li>
+        <li class="amenities"><h3>Amazing Amenities</h3></li>
+        <li class="city"><h3>City Exploring</h3></li>
+        <li class="surv"><h3>Bring On The Dirt!</h3></li>
+        <li class="winter"><h3>"Cool" RVs</h3></li>
+        <li class="equestrian"><h3>RVs That Giddy Up</h3></li>
+        <li class="mobility"><h3>Mobility Enhancers</h3></li>
       </ul> <!-- /grid -->
-      
-      <button id="open-selector"> Find my RV </button>
-      
+
+      <p class="button">
+        <button id="open-selector"> Find your RV </button>
+      </p>
+
       <div class="content">
+        <div class="item kids">
+          <div class="container">
+            <h4>Kids</h4>
+            <p>Thundercats fap odd future, dreamcatcher Austin locavore raw denim pork belly. Ethnic before they sold out pour-over, pickled kogi mcsweeney's quinoa raw denim craft beer bushwick. Beard occupy shoreditch mcsweeney's etsy marfa.</p>
+            <p>Pop-up echo park lomo, odd future hoodie ennui marfa street art. Put a bird on it forage vice stumptown.</p>
+            <p>Kogi ethnic lo-fi letterpress cardigan you probably haven't heard of them, cray vegan. Lomo keytar jean shorts, twee photo booth marfa mcsweeney's yr. Street art mixtape skateboard dreamcatcher vegan.</p>
+            <p>Synth wes anderson seitan ethnic VHS farm-to-table. Lomo chillwave polaroid, wolf williamsburg pour-over cray.</p>
+            <button id="back-to-lifestyles">Back</button>
+          </div>
+        </div> <!-- /.item.kids -->
         <div class="item tailgating">
-          
-        </div>
+          <div class="container">
+            <h4>Tailgating</h4>
+            <p>Thundercats fap odd future, dreamcatcher Austin locavore raw denim pork belly. Ethnic before they sold out pour-over, pickled kogi mcsweeney's quinoa raw denim craft beer bushwick. Beard occupy shoreditch mcsweeney's etsy marfa.</p>
+            <p>Pop-up echo park lomo, odd future hoodie ennui marfa street art. Put a bird on it forage vice stumptown.</p>
+            <p>Kogi ethnic lo-fi letterpress cardigan you probably haven't heard of them, cray vegan. Lomo keytar jean shorts, twee photo booth marfa mcsweeney's yr. Street art mixtape skateboard dreamcatcher vegan.</p>
+            <p>Synth wes anderson seitan ethnic VHS farm-to-table. Lomo chillwave polaroid, wolf williamsburg pour-over cray.</p>
+            <button id="back-to-lifestyles">Back</button>
+          </div>
+        </div> <!-- /.item.tailgating -->
+        <div class="item cooking">
+          <div class="container">
+            <h4>Cooking</h4>
+            <p>Thundercats fap odd future, dreamcatcher Austin locavore raw denim pork belly. Ethnic before they sold out pour-over, pickled kogi mcsweeney's quinoa raw denim craft beer bushwick. Beard occupy shoreditch mcsweeney's etsy marfa.</p>
+            <p>Pop-up echo park lomo, odd future hoodie ennui marfa street art. Put a bird on it forage vice stumptown.</p>
+            <p>Kogi ethnic lo-fi letterpress cardigan you probably haven't heard of them, cray vegan. Lomo keytar jean shorts, twee photo booth marfa mcsweeney's yr. Street art mixtape skateboard dreamcatcher vegan.</p>
+            <p>Synth wes anderson seitan ethnic VHS farm-to-table. Lomo chillwave polaroid, wolf williamsburg pour-over cray.</p>
+            <button id="back-to-lifestyles">Back</button>
+          </div>
+        </div> <!-- /.item.cooking -->
       </div>
       
     </div> <!-- /lifestyles -->
     <div id="selector">
-      <div class="question-panel">
-        <div class="questions">
-          <div class="current-question"><span>1</span></div> <!-- /current-question -->
-
-
-          <!--
-            EXAMPLE MARK-UP
-          <div class="question" id="q1" data-dyk="1">
-            <h3>Do you prefer a vehicle you can tow or drive?</h3>
-            <div class="answer">
-              <label for="q1-a1"><input type="radio" name="q1" id="q1-a1" value="tow" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q2" data-dyk="2" /> Tow</label>
-              <label for="q1-a2"><input type="radio" name="q1" id="q1-a2" value="drive" data-results="{ space delimited list of RVs to keep selected }" data-next-question="q3" data-dyk="3" /> Drive</label>
-            </div>
-          </div> -->
-
-
-
-
-
-          <div class="question" id="q1" data-did-you-know="1">
-            <h3>Do you prefer a vehicle you can tow or drive?</h3>
-            <div class="answer">
-              <label for="q1-a1">
-                <input type="radio" name="q1" id="q1-a1" value="tow" data-results="TT 5thW EXP FCT TC" data-next-question="q2" data-did-you-know="2" /> Tow
-              </label>
-              <label for="q1-a2">
-                <input type="radio" name="q1" id="q1-a2" value="drive" data-results="A B C" data-next-question="q4" data-did-you-know="3" /> Drive
-              </label>
-            </div> <!-- /answer -->
-          </div> <!-- /question -->
-
-          <div class="question" id="q2" data-did-you-know="4">
-            <h3>What kind of vehicle will you use to tow?</h3>
-            <div class="answer">
-              <label for="q2-a1">
-                <input type="radio" name="q2" id="q2-a1" value="sedan-minivan" data-results="TT EXP FCT" data-next-question="q3" /> Sedan/Minivan
-              </label>
-              <label for="q2-a2">
-                <input type="radio" name="q2" id="q2-a2" value="light-duty-truck" data-results="TT EXP FCT TC" data-next-question="q3" /> Light-Duty Truck
-              </label>
-              <label for="q2-a3">
-                <input type="radio" name="q2" id="q2-a3" value="full-size pickup" data-results="TT 5thW EXP FCT TC" data-next-question="q3" /> Full-Size Pickup
-              </label>
-              <label for="q2-a4">
-                <input type="radio" name="q2" id="q2-a4" value="suv" data-results="TT EXP FCT" data-next-question="q3" /> SUV
-              </label>
-            </div> <!-- /answer -->
-          </div> <!-- /question -->
-
-          <div class="question" id="q3" data-did-you-know="5">
-            <h3>Do you prefer the feeling of sleeping indoors or outdoors?</h3>
-            <div class="answer">
-              <label for="q3-a1">
-                <input type="radio" name="q3" id="q3-a1" value="outdoors" data-results="EXP FCT" data-next-question="q4" /> Outdoors
-              </label>
-              <label for="q3-a2">
-                <input type="radio" name="q3" id="q3-a2" value="indoors" data-results="TT 5thW TC" data-next-question="q4" /> Indoors
-              </label>
-            </div> <!-- /answer -->
-          </div> <!-- /question -->
-
-          <div class="question" id="q4" data-did-you-know="5">
-            <h3>How many people would you like your RV to sleep?</h3>
-            <div class="answer">
-              <label for="q4-a1">
-                <input type="radio" name="q4" id="q4-a1" value="4" data-results="A B C TT 5thW EXP FCT TC" /> Up to 4
-              </label>
-              <label for="q4-a2">
-                <input type="radio" name="q4" id="q4-a2" value="6" data-results="A C TT 5thW EXP FCT TC" /> Up to 6
-              </label>
-              <label for="q4-a3">
-                <input type="radio" name="q4" id="q4-a3" value="8" data-results="C TT 5thW EXP FCT" /> Up to 8
-              </label>
-              <label for="q4-a4">
-                <input type="radio" name="q4" id="q4-a4" value="10" data-results="TT" /> Up to 10
-              </label>
-            </div> <!-- /answer -->
-          </div> <!-- /question -->
-
-
-
-
-
-
-        </div> <!-- /questions -->
-        <div class="navigation">
-          <button class="previous">Previous</button>
-          <button class="next">Next</button>
-          <button class="finish">Finish</button>
-        </div> <!-- /navigation -->
-      </div> <!-- /question-panel -->
-      <div class="grid">
-        <ul>
-          <li data-code="TT"><span>Conventional Travel Trailer</span></li>
-          <li data-code="5thW"><span>Fifth-Wheel Travel Trailer</span></li>
-          <li data-code="TC"><span>Truck Camper</span></li>
-          <li data-code="EXP"><span>Expandable Travel Trailer</span></li>
-          <li data-code="FCT"><span>Folding Camping Trailer</span></li>
-          <li data-code="A"><span>Type A Motorhome</span></li>
-          <li data-code="B"><span>Type B Motorhome</span></li>
-          <li data-code="C"><span>Type C Motorhome</span></li>
-        </ul>
-      </div><!-- /grid -->
-      <div class="did-you-knows">
-        <div class="item" data-id="1">
-          <span>New innovations make today&rsquo;s RVs more fuel-efficient than ever.</span>
+      <div id="debug"><div class="answer-set"></div></div>
+      <div class="container">
+        <div class="question-panel">
+          <div class="questions">
+            <div class="current-question"><span>1</span></div> <!-- /current-question -->
+            <div class="question" id="q1" data-did-you-know="1">
+              <h3>Do you prefer a vehicle you can tow or drive?</h3>
+              <div class="answer">
+                <label for="q1-a1">
+                  <input type="radio" name="q1" id="q1-a1" value="tow" data-results="TT 5thW EXP FCT TC" data-next-question="q2" data-did-you-know="2" /> Tow
+                </label>
+                <label for="q1-a2">
+                  <input type="radio" name="q1" id="q1-a2" value="drive" data-results="A B C" data-next-question="q4" data-did-you-know="3" /> Drive
+                </label>
+              </div> <!-- /answer -->
+            </div> <!-- /question -->
+  
+            <div class="question" id="q2" data-did-you-know="4">
+              <h3>What kind of vehicle will you use to tow?</h3>
+              <div class="answer">
+                <label for="q2-a1">
+                  <input type="radio" name="q2" id="q2-a1" value="sedan-minivan" data-results="TT EXP FCT" data-next-question="q3" /> Sedan/Minivan
+                </label>
+                <label for="q2-a2">
+                  <input type="radio" name="q2" id="q2-a2" value="light-duty-truck" data-results="TT EXP FCT TC" data-next-question="q3" /> Light-Duty Truck
+                </label>
+                <label for="q2-a3">
+                  <input type="radio" name="q2" id="q2-a3" value="full-size pickup" data-results="TT 5thW EXP FCT TC" data-next-question="q3" /> Full-Size Pickup
+                </label>
+                <label for="q2-a4">
+                  <input type="radio" name="q2" id="q2-a4" value="suv" data-results="TT EXP FCT" data-next-question="q3" /> SUV
+                </label>
+              </div> <!-- /answer -->
+            </div> <!-- /question -->
+  
+            <div class="question" id="q3" data-did-you-know="5">
+              <h3>Do you prefer the feeling of sleeping indoors or outdoors?</h3>
+              <div class="answer">
+                <label for="q3-a1">
+                  <input type="radio" name="q3" id="q3-a1" value="outdoors" data-results="EXP FCT" data-next-question="q4" /> Outdoors
+                </label>
+                <label for="q3-a2">
+                  <input type="radio" name="q3" id="q3-a2" value="indoors" data-results="TT 5thW TC" data-next-question="q4" /> Indoors
+                </label>
+              </div> <!-- /answer -->
+            </div> <!-- /question -->
+  
+            <div class="question" id="q4" data-did-you-know="5">
+              <h3>How many people would you like your RV to sleep?</h3>
+              <div class="answer">
+                <label for="q4-a1">
+                  <input type="radio" name="q4" id="q4-a1" value="4" data-results="A B C TT 5thW EXP FCT TC" /> Up to 4
+                </label>
+                <label for="q4-a2">
+                  <input type="radio" name="q4" id="q4-a2" value="6" data-results="A C TT 5thW EXP FCT TC" /> Up to 6
+                </label>
+                <label for="q4-a3">
+                  <input type="radio" name="q4" id="q4-a3" value="8" data-results="C TT 5thW EXP FCT" /> Up to 8
+                </label>
+                <label for="q4-a4">
+                  <input type="radio" name="q4" id="q4-a4" value="10" data-results="TT" /> Up to 10
+                </label>
+              </div> <!-- /answer -->
+            </div> <!-- /question -->
+  
+  
+  
+  
+  
+  
+          </div> <!-- /questions -->
+          <div class="navigation">
+            <button class="previous">Previous</button>
+            <button class="next">Next</button>
+            <button class="finish">Finish</button>
+          </div> <!-- /navigation -->
+        </div> <!-- /question-panel -->
+        <div class="grid">
+          <ul>
+            <li data-code="TT"><span>Conventional Travel Trailer</span></li>
+            <li data-code="5thW"><span>Fifth-Wheel Travel Trailer</span></li>
+            <li data-code="TC"><span>Truck Camper</span></li>
+            <li data-code="EXP"><span>Expandable Travel Trailer</span></li>
+            <li data-code="FCT"><span>Folding Camping Trailer</span></li>
+            <li data-code="A"><span>Type A Motorhome</span></li>
+            <li data-code="B"><span>Type B Motorhome</span></li>
+            <li data-code="C"><span>Type C Motorhome</span></li>
+          </ul>
+        </div><!-- /grid -->
+        <div class="content">
+          <div class="item tt">
+            <h4>Conventional Travel Trailer</h4>
+            <p>content</p>
+            <button id="close-rv-info">
+          </div>
         </div>
-        <div class="item" data-id="2">
-          <span>A benefit of towing your RV is that you can unhitch at the campground and have your vehicle for sightseeing adventures.</span>
-        </div>
-        <div class="item" data-id="3">
-          <span>Motorhomes have plenty of seatbelts &ndash; so passengers can play a game at the dinette or relax on the sofa while riding down the road.</span>
-        </div>
-        <div class="item" data-id="4">
-          <span>This is DYK #4!</span>
-        </div>
-      </div> <!-- /didyouknows -->
+        <div class="did-you-knows">
+          <div class="item" data-id="1">
+            <span>New innovations make today&rsquo;s RVs more fuel-efficient than ever.</span>
+          </div>
+          <div class="item" data-id="2">
+            <span>A benefit of towing your RV is that you can unhitch at the campground and have your vehicle for sightseeing adventures.</span>
+          </div>
+          <div class="item" data-id="3">
+            <span>Motorhomes have plenty of seatbelts &ndash; so passengers can play a game at the dinette or relax on the sofa while riding down the road.</span>
+          </div>
+          <div class="item" data-id="4">
+            <span>This is DYK #4!</span>
+          </div>
+        </div> <!-- /didyouknows -->
+      </div> <!-- /container -->
     </div> <!-- /selector -->
     <div id="results">
-      <div class="rv" data-code="A">RV A</div>
-      <div class="rv" data-code="B">RV B</div>
-      <div class="rv" data-code="C">RV C</div>
-      <div class="rv" data-code="TT">RV TT</div>
-      <div class="rv" data-code="5thW">RV 5thW</div>
-      <div class="rv" data-code="EXP">RV EXP</div>
-      <div class="rv" data-code="FCT">RV FCT</div>
-      <div class="rv" data-code="TC">RV TC</div>
+      <div class="container">
+        <div class="header">
+          <h2>Your <span>0</span> Top Results</h2>
+          <ul>
+            <li><a href="#">Print results</a></li>
+            <li><span>|</span></li>
+            <li><a href="#" id="start-over">Start over</a></li>
+          </ul>
+        </div> <!-- /header -->
+        <div class="panel">
+          <div class="pane">
+            <div class="rv" data-code="A">RV A</div>
+            <div class="rv" data-code="B">RV B</div>
+            <div class="rv" data-code="C">RV C</div>
+            <div class="rv" data-code="TT">RV TT</div>
+            <div class="rv" data-code="5thW">RV 5thW</div>
+            <div class="rv" data-code="EXP">RV EXP</div>
+          </div> <!-- /pane -->
+        </div> <!-- /panel -->
+        <div class="navigation"></div> <!-- /navigation -->
+      </div> <!-- /container -->
     </div> <!-- /results -->
   </div> <!-- /grv-selector-container -->
   
-  <p style="display: none;"><a href="/index.html">Leave this page</a></p>
+  <p><a href="/index.html">Leave this page</a></p>
   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   <script src="selector.js"></script>

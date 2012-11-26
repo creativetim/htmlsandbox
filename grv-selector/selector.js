@@ -1,5 +1,7 @@
 function StepThrough(element) {
   this.$element = element = $(element);
+  this.lifestyles = {};
+  this.selector = {};
 
   this.steps = {
     '$splash': $('#splash'),
@@ -7,6 +9,9 @@ function StepThrough(element) {
     '$selector': $('#selector'),
     '$results': $('#results')
   };
+
+  this.currentResultsPane = 0;
+  this.$pane = this.$element.find('#results .panel .pane');
 
 	// setup event listeners
 	this._setupEventListeners();
@@ -17,11 +22,16 @@ StepThrough.prototype = {
   _setupEventListeners: function () {
 		var $element = this.$element;
 
-		$(window).on('load', $.proxy(this, 'showSplash'));
-		
+		$(window).on('load', $.proxy(this, 'showSelector'));
+
 		$element.on('click', '#open-lifestyles', $.proxy(this, 'showLifestyles'));
 		$element.on('click', '#open-selector', $.proxy(this, 'showSelector'));
-		$element.on('click', '#open-results', $.proxy(this, 'showSelector'));
+		$element.on('click', '#start-over', $.proxy(this, 'startOver'));
+		// showResults is handled in RVSelector.finish()
+
+		this.steps.$results.on('click', 'button.pane', $.proxy(this, 'showResultsPane'));
+
+		$(window).on('unload', $.proxy(this, 'showWarning'));
   },
   showSplash: function() {
     console.log('SHOW SPLASH');
@@ -32,21 +42,110 @@ StepThrough.prototype = {
     console.log('SHOW LIFESTYLES');
     this.resetPanels();
     this.steps.$lifestyles.addClass('open');
+    this.lifestyles = new Lifestyles(this.steps.$lifestyles);
   },
   showSelector: function() {
     console.log('SHOW SELECTOR');
     this.resetPanels();
     this.steps.$selector.addClass('open');
-    var selector = new RVSelector(this.steps.$selector);
+    this.selector = new RVSelector(this.steps.$selector);
   },
   showResults: function() {
     console.log('SHOW RESULTS');
     this.resetPanels();
     this.steps.$results.addClass('open');
+
+    var total = $('#results .pane .rv.enabled').length;
+    var finalResultsPageCount = Math.ceil((total / 3));
+    var $resultsCount = this.steps.$results.find('.header h2 span');
+
+    this.generatePagination(finalResultsPageCount);
+    $resultsCount.html(total);
+  },
+  generatePagination: function(count) {
+    var $navigation = this.steps.$results.find('.navigation');
+    var buttonCount = count;
+
+    if (buttonCount > 1) {
+      var inner = '';
+
+      for (i = 0; i < buttonCount; i++) {
+        inner = inner + '<button class="pane" data-pane="' + i + '">Page ' + (i+1) + '</button>'; 
+      }
+
+      $navigation.html(inner);
+    }
+
+  },
+  showResultsPane: function (e) {
+    console.log('CALL: showResultsPane()');
+
+    // how many pages   math.ceil(total / 3)
+    // if greater than one, run "next" code - create buttons
+    // multipy pages * width of pane to set the pane
+
+    $this = $(e.currentTarget);
+    var pane = $this.parent().children('button').index($this);
+    var $pane = this.$pane;
+    var distance = $pane.parent().width();
+    var options = {};
+
+    options.left = -pane * distance;
+
+    // animate
+    $pane.animate(options, 800);
   },
   resetPanels: function() {
     this.$element.children().removeClass('open');
-  }
+  },
+  startOver: function() {
+    this.showSelector();
+    this.selector.startOver();
+  },
+	showWarning: function (e) {
+		console.log('CALL: showWarning');
+		e.preventDefault();
+		e.stopPropogation();
+		return false;
+		//var response = confirm('Are you sure you want to lose your changes?');
+	}
+};
+
+function Lifestyles(element) {
+  // setup selectors
+	this.$element = element = $(element);
+	this.$lifestyleContent = this.$element.find('.content');
+	
+	// setup event listeners
+	this._setupEventListeners();
+}
+
+Lifestyles.prototype = {
+	_setupEventListeners: function () {
+		var $element = this.$element;
+
+		$element.on('click', 'ul.grid li', $.proxy(this, 'clickLifestyle'));
+		$element.on('click', '#back-to-lifestyles', $.proxy(this, 'closeLifestyle'));
+	},
+
+	clickLifestyle: function(e) {
+  	console.log('CALL: clickLifestyle()');
+
+  	$this = $(e.currentTarget);
+  	var lifestyle = $this.attr('class');
+
+  	this.openLifestyle(this.$lifestyleContent.find('.' + lifestyle));
+	},
+	openLifestyle: function(lifestyle) {
+  	console.log('CALL: openLifestyle(lifestyle)');
+
+  	return $(lifestyle).addClass('open');
+	},
+	closeLifestyle: function() {
+  	console.log('CALL: closeLifestyle()');
+  	
+  	this.$lifestyleContent.find('.item').removeClass('open');
+	}
 };
 
 function RVSelector(element) {
@@ -54,6 +153,7 @@ function RVSelector(element) {
 	this.$element = element = $(element);
 	this.$currentQuestionCounter = element.find('.current-question span');
 	this.$products = this.$element.find('.grid li');
+	this.$productContent = this.$element.find('.content');
 	this.$results = $('#results .rv');
 
 	// setup properties
@@ -77,11 +177,14 @@ RVSelector.prototype = {
 	_setupEventListeners: function () {
 		var $element = this.$element;
 
+		//$('html').one('click', ':not(#selector .content .item.open)' , function(e) { $.proxy(this, 'closeRVInfo'); console.log($(e.currentTarget)); } );
+
 		$element.on('change', ':radio', $.proxy(this, 'onAnswerChange'));
 		$element.on('click', 'button.next', $.proxy(this, 'next'));
 		$element.on('click', 'button.previous', $.proxy(this, 'previous'));
+		$element.on('click', 'button.finish', $.proxy(this, 'finish'));
+		//$element.on('click', '.grid li', $.proxy(this, 'clickRVGrid'));
 
-		$(window).on('unload', $.proxy(this, 'showWarning'));
 	},
 
 	onAnswerChange: function (e) {
@@ -182,16 +285,21 @@ RVSelector.prototype = {
 
 	},
 	_debugAnswerSet: function(string) {
-  	$('#debug .answer-set').append('<p>' + string + '</p>');
+  	//$('#debug .answer-set').append('<p>' + string + '</p>');
 
 	},
 	_debugAnswerSetReset: function() {
-  	$('#debug .answer-set').html('');
+  	//$('#debug .answer-set').html('');
 
 	},
 
 	startOver: function () {
+	  this.currentQuestion = 1;
+	  this.currentQuestionCount = 1;
+	  this.activeProducts = new Array();
+	  
 		this.$element.find(':checked').prop('checked', false);
+		this.incrementCurrentQuestionCount(0);
 		this.hideQuestions();
 		this.showQuestion(1);
 
@@ -203,7 +311,7 @@ RVSelector.prototype = {
   	this.resetResultsPage();
 
   	$.each(products, function(index) {
-    	$('#results .rv[data-code="' + products[index] + '"]').addClass('enabled');
+    	$('#results .panel .pane .rv[data-code="' + products[index] + '"]').addClass('enabled');
   	});
 
 	},
@@ -272,12 +380,15 @@ RVSelector.prototype = {
   	this.$currentQuestionCounter.html(this.currentQuestionCount);
 
 	},
+	isCurrentQuestionAnswered: function () {
+		// check to make sure the current question has been answered
+		var $question = this.getCurrentQuestion();
+		return $question.find(':checked');
+	},
 	next: function () {
 		console.log('CALL: next()');
 
-		// check to make sure the current question has been answered
-		var $question = this.getCurrentQuestion();
-		var $answered = $question.find(':checked');
+		var $answered = this.isCurrentQuestionAnswered();
 
 		if (!!$answered.get(0)) {
   		// determine the (1-based)index of the next question
@@ -305,11 +416,40 @@ RVSelector.prototype = {
 		}
 
 	},
-	
-	showWarning: function () {
-		console.log('CALL: showWarning');
-		//var response = confirm('Are you sure you want to lose your changes?');
+	finish: function () {
+  	console.log('CALL: finish()');
+
+  	var $answered = this.isCurrentQuestionAnswered();
+
+  	if (!!$answered.get(0)) {
+  	  step.showResults();
+  	}
+
+	},
+	clickRVGrid: function(e) {
+  	console.log('CALL: clickRVGrid(e)');
+  	
+  	var $this = $(e.currentTarget);
+  	var code = $this.data('code').toLowerCase();
+
+  	this.openRVInfo(code);
+  	e.stopPropagation();
+	},
+	openRVInfo: function(rv) {
+  	console.log('CALL: openRVInfo(rv)');
+
+  	this.closeRVInfo();
+  	this.$productContent.find('.item.' + rv).addClass('open');
+
+	},
+	closeRVInfo: function() {
+  	console.log('CALL: closeRVInfo()');
+
+  	if ( this.$productContent.find('.item').hasClass('open') ) {
+    	this.$productContent.find('.item').removeClass('open');
+    }
 	}
+
 };
 
 var step = new StepThrough('#grv-selector-container');
