@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>GRV Selector Tool Prototype</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<style type="text/css">
+  	
+  	.container {
+  	  height: 120px;
+  	  outline: 1px solid black;
+    	width: 350px;
+  	}
+  	
+  	#people-wrap {
+    	position: relative;
+  	}
+  	
+  	.people-mask {
+    	background: url('http://grvdev.clickherestaging.com/_assets/_images/_selector/people.png') repeat-x;
+    	height: 117px;
+    	position: absolute;
+    	top: 0;
+    	z-index: 100;
+  	}
+  	
+  	.people-mask span {
+  	  display: block;
+  	  float: left;
+  	  height: 117px;
+  	  margin-right: 0;
+  	  outline: 1px solid #999;
+    	width: 53px;
+  	}
+  	
+  	.people-active {
+    	height: 117px;
+    	position: absolute;
+    	top: 0;
+    	z-index: 10;
+  	}
+  	.people-active span {
+  	  display: block;
+  	  float: left;
+  	  height: 117px;
+  	  margin-right: 0;
+  	  outline: 1px solid #999;
+    	width: 53px;
+  	}
+	</style>
+
+ <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+ <![endif]-->
+</head>
+<body>
+<div class="container">
+  <div id="people-wrap">
+    <div class="people-mask">
+      <span rel="1"></span>
+      <span rel="2"></span>
+      <span rel="3"></span>
+      <span rel="4"></span>
+      <span rel="5"></span>
+      <span rel="6"></span>
+      <span rel="7"></span>
+      <span rel="8"></span>
+      <span rel="9"></span>
+      <span rel="10"></span>
+    </div>
+    <div class="people-active">
+      <span rel="1"></span>
+      <span rel="2"></span>
+      <span rel="3"></span>
+      <span rel="4"></span>
+      <span rel="5"></span>
+      <span rel="6"></span>
+      <span rel="7"></span>
+      <span rel="8"></span>
+      <span rel="9"></span>
+      <span rel="10"></span>
+    </div>
+  </div>
+</div>
+
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script type="text/javascript">
+    
+    $(document).ready(function(){
+
+      function peopleSlider (element) {
+        this.$element = $(element);
+        this.activePeopleElement = 'span';
+        this.$peopleMask = this.$element.find('.people-mask');
+        this.$activePeople = this.$element.find('.people-active');
+
+      	// setup event listeners
+      	this._setupEventListeners();
+        
+      };
+      
+      peopleSlider.prototype = {
+        _setupEventListeners: function () {
+          //console.log(this.activePeopleElement);
+          //console.log(this.$peopleMask);
+          this.$peopleMask.on('mouseenter', this.activePeopleElement, $.proxy(this, 'peopleHover'));
+          this.$peopleMask.on('mouseout', this.activePeopleElement, $.proxy(this, 'peopleHoverOver')); // could not think of a better name =\
+          this.$peopleMask.on('click', this.activePeopleElement, $.proxy(this, 'peopleClick'));
+
+        },
+
+        peopleClick: function (e) {
+          this.$peopleMask.find(this.activePeopleElement).removeClass('selected');
+          $(e.currentTarget).addClass('selected');
+        },
+        peopleHover: function (e) {
+          var peopleCount = this._getPeopleCount($(e.currentTarget));
+
+          this._highlight(this.$activePeople, peopleCount);
+        },
+        peopleHoverOver: function (e) {
+          var resetBackTo = this._getPeopleCount(this.$peopleMask.find('span[class="selected"]'));
+
+    			if (!!resetBackTo) {
+      			this._highlight(this.$activePeople, resetBackTo);
+    			} else {
+      			this._reset(this.$activePeople);
+    			}
+        },
+        _getPeopleCount: function ($selector) {
+          return $selector.attr('rel');
+        },
+        _highlight: function ($selector, index) {
+      		this._reset($selector);
+
+      		$selector.find(this.activePeopleElement + ':lt(' + index + ')').css('background-color', '#8ea6a4');
+        },
+        _reset: function ($selector) {
+          this.$activePeople.children().css('background-color', '#ffffff');
+        }
+      };
+
+      people = new peopleSlider('#people-wrap');
+
+  		/*$('.people-mask span').mouseenter(function(e){
+  			var peopleNum = $(this).attr("rel");
+  			var $selector = $('.people-wrap .people-active');
+
+  			highlight($selector, peopleNum);
+
+  		});
+
+  		$('.people-mask span').mouseout(function(e){
+  			var peopleNum = $('.people-wrap .people-mask span[class="selected"]').attr('rel');
+  			var $selector = $('.people-wrap .people-active');
+
+  			if (!!peopleNum) {
+    			highlight($selector, peopleNum);
+  			} else {
+    			reset($selector);
+  			}
+
+  		});
+  		
+  		$('.people-mask span').click(function(e){
+  		  $(this).siblings().removeClass('selected');
+  			$(this).addClass('selected');
+
+  		});*/
+
+    });
+    
+  </script>
+</body>
+</html>

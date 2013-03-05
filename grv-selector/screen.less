@@ -1,28 +1,21 @@
 @spash-color: #fff;
 @body-color: #4f4330;
 
-* { margin: 0; padding: 0; }
-
-body {
-  height: 100%;
-  padding-top: 10px;
-  position: relative;
-  width: 100%;
+#wrapper.clearfix.selector #content {
+  padding: 0;
 }
 
 #grv-selector-container {
   font-family: Helvetica, Arial, sans-serif;
   margin: 0 auto;
   height: 623px;
-  outline: 1px solid #eee;
   overflow: hidden;
-  width: 977px;
+  width: 937px;
   
   h2 { padding: 0 0 1em 0; }
-  p { padding: 1em 0; }
+  p { letter-spacing: normal; padding: 1em 0; }
 
   #splash {
-    background: #000;
     color: @spash-color;
     display: none;
     height: auto;
@@ -60,7 +53,6 @@ body {
   #lifestyles {
     color: @body-color;
     display: none;
-    padding: 1em;
     position: relative;
 
     &.open {
@@ -87,7 +79,7 @@ body {
         float: left;
         height: 128px;
         list-style: none;
-        margin: 25px 25px 0 0;
+        margin: 15px 15px 0 0;
         outline: 1px solid #eee;
         width: 289px;
         
@@ -186,6 +178,15 @@ body {
           & button.previous { float: left; }
           & button.next,
           & button.finish { float: right; }
+          
+          button {
+            background: none;
+            border: none;
+            height: auto;
+            left: auto;
+            position: relative;
+            width: auto;
+          }
         } // #selector .question-panel .navigation
       } // #selector .question-panel
   

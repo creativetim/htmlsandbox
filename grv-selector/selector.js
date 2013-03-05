@@ -22,7 +22,7 @@ StepThrough.prototype = {
   _setupEventListeners: function () {
 		var $element = this.$element;
 
-		$(window).on('load', $.proxy(this, 'showSelector'));
+		$(window).on('load', $.proxy(this, 'showLifestyles'));
 
 		$element.on('click', '#open-lifestyles', $.proxy(this, 'showLifestyles'));
 		$element.on('click', '#open-selector', $.proxy(this, 'showSelector'));
@@ -30,8 +30,6 @@ StepThrough.prototype = {
 		// showResults is handled in RVSelector.finish()
 
 		this.steps.$results.on('click', 'button.pane', $.proxy(this, 'showResultsPane'));
-
-		$(window).on('unload', $.proxy(this, 'showWarning'));
   },
   showSplash: function() {
     console.log('SHOW SPLASH');
@@ -101,14 +99,7 @@ StepThrough.prototype = {
   startOver: function() {
     this.showSelector();
     this.selector.startOver();
-  },
-	showWarning: function (e) {
-		console.log('CALL: showWarning');
-		e.preventDefault();
-		e.stopPropogation();
-		return false;
-		//var response = confirm('Are you sure you want to lose your changes?');
-	}
+  }
 };
 
 function Lifestyles(element) {
@@ -451,6 +442,11 @@ RVSelector.prototype = {
 	}
 
 };
+
+		function showWarning() {
+  		return "You're almost done finding your RV.\nAre you sure you want to leave this page?";
+		}
+		window.onbeforeunload = showWarning;
 
 var step = new StepThrough('#grv-selector-container');
 //var selector = new RVSelector('#selector');

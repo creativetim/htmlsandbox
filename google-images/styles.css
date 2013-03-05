@@ -1,0 +1,36 @@
+#stories {}
+#stories .story {
+  background: #666;
+  display: inline-block;
+  height: 100px;
+  margin: 12px;
+  width: 100px;
+}
+#stories .story a {
+    color: #000;
+    display: block;
+    font-size: 72px;
+    height: 100%;
+    line-height: 105px;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+}
+
+#stories #infoPanel {
+    display: none;
+    height: 150px;
+    margin: 12px 0;
+    outline: 2px solid red;
+    width: 100%;
+}
+
+#debug {
+    border: 2px solid black;
+    display: none;
+    height: auto;
+    opacity: .8;
+    position: fixed;
+    right: 0;
+    width: 150px;
+}

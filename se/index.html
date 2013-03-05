@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title></title>
+
+ <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+ <![endif]-->
+ <style type="text/css">
+  div.slides { height: 200px; width: 200px; overflow: hidden; }
+  div.slides div.item { color: #fff; height: 100%; width: 100%; }
+ </style>
+</head>
+<body>
+
+<p><button id="prev">Previous</button> <button id="next">Next</button></p>
+
+<div class="slides">
+  <div class="item" style="background-color: red;"><h1>1</h1></div>
+  <div class="item" style="background-color: green;"><h1>2</h1></div>
+  <div class="item" style="background-color: blue;"><h1>3</h1></div>
+  <div class="item" style="background-color: purple;"><h1>4</h1></div>
+</div>
+
+<p><button id="playpause">Pause</button></p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="jquery.cycle.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.slides').before('<ul id="bullets">').cycle({
+      fx: 'fade',
+      pager: '#bullets',
+      pagerAnchorBuilder: function (index, slide) {
+        return '<li><a href="#">&bull;</a></li>';
+      }
+    });
+    
+    $('#prev').click(function() {
+      $('.slides').cycle('prev');
+    });
+    $('#next').click(function() {
+      $('.slides').cycle('next');
+    });
+    $('#playpause').click(function() {
+      $('.slides').cycle('toggle');
+    });
+  });
+</script>
+</body>
+</html>

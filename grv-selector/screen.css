@@ -1,29 +1,21 @@
-* {
-  margin: 0;
+#wrapper.clearfix.selector #content {
   padding: 0;
-}
-body {
-  height: 100%;
-  padding-top: 10px;
-  position: relative;
-  width: 100%;
 }
 #grv-selector-container {
   font-family: Helvetica, Arial, sans-serif;
   margin: 0 auto;
   height: 623px;
-  outline: 1px solid #eee;
   overflow: hidden;
-  width: 977px;
+  width: 937px;
 }
 #grv-selector-container h2 {
   padding: 0 0 1em 0;
 }
 #grv-selector-container p {
+  letter-spacing: normal;
   padding: 1em 0;
 }
 #grv-selector-container #splash {
-  background: #000;
   color: #ffffff;
   display: none;
   height: auto;
@@ -62,7 +54,6 @@ body {
 #grv-selector-container #lifestyles {
   color: #4f4330;
   display: none;
-  padding: 1em;
   position: relative;
 }
 #grv-selector-container #lifestyles.open {
@@ -86,7 +77,7 @@ body {
   float: left;
   height: 128px;
   list-style: none;
-  margin: 25px 25px 0 0;
+  margin: 15px 15px 0 0;
   outline: 1px solid #eee;
   width: 289px;
 }
@@ -178,6 +169,14 @@ body {
 #grv-selector-container #selector .container .question-panel .navigation button.next,
 #grv-selector-container #selector .container .question-panel .navigation button.finish {
   float: right;
+}
+#grv-selector-container #selector .container .question-panel .navigation button {
+  background: none;
+  border: none;
+  height: auto;
+  left: auto;
+  position: relative;
+  width: auto;
 }
 #grv-selector-container #selector .container .grid {
   float: left;
